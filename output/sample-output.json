@@ -1,0 +1,27 @@
+{
+    "alu_only_filter": false,
+    "urls": [
+        "https://www.alueducation.com",
+        "https://portal.alueducation.com/dashboard",
+        "http://internal.techcorp.io/reports/2024/july",
+        "https://docs.python.org/3/library/re.html"
+    ],
+    "phone_numbers": [
+        "180****199",
+        "250****456",
+        "071****678"
+    ],
+    "emails": [
+        "su***@alueducation.com",
+        "al***@alumni.alueducation.com",
+        "ja***@alustudents.com",
+        "k.***@si.alueducation.com",
+        "jo***@gmail.com",
+        "bi***@techcorp.io"
+    ],
+    "credit_cards": [
+        "4111 **** **** 1111",
+        "5500 **** **** 0004",
+        "3782 **** **** 0005"
+    ]
+}
