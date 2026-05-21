@@ -34,3 +34,35 @@ not-an-email@
 phone: 123
 card: 1234 5678
 url: justtext.noprotocol
+
+--- Additional Test Data ---
+
+More staff contacts:
+registrar@alueducation.com
+admissions@si.alueducation.com
+john.alumni@alumni.alueducation.com
+random.person@yahoo.com
+contact@microsoft.com
+
+More phone formats:
++44 20 7946 0958
++1 415 555 0132
+0798765432
+
+More transactions:
+Card: 4532 0151 1283 0366  [Visa]
+Card: 6011-1111-1111-1117  [Discover]
+Card: 370000000000002       [Amex]
+
+More URLs:
+https://github.com/j-nyamu
+https://www.wikipedia.org/wiki/Regular_expression
+http://api.alueducation.com/v1/students
+
+More invalid/tricky entries (should NOT match):
+email: missingatsign.com
+phone: 12345
+card: 9999 9999
+url: ftp://shouldnotmatch.com
+email: @missinglocal.com
+phone: +999
