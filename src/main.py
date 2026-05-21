@@ -1,34 +1,18 @@
 import re
 import json
-import os
-
-# ─────────────────────────────────────────
-#  LOAD INPUT FILE
-# ─────────────────────────────────────────
-
-def load_text(filepath):
-    with open(filepath, "r") as f:
-        return f.read()
-
+from file_handler import load_text
+from input_validator import get_alu_choice
+from output_handler import save_output
 
 # ─────────────────────────────────────────
 #  REGEX PATTERNS
 # ─────────────────────────────────────────
 
-# URLs: must start with http:// or https://
-URL_PATTERN = r'https?://[^\s]+'
-
-# Phone numbers: international (+1-800-555-0199, +250 788 123 456) or local (0712345678)
+URL_PATTERN   = r'https?://[^\s]+'
 PHONE_PATTERN = r'(\+\d{1,3}[-\s]\d{1,4}[-\s]\d{3}[-\s]\d{3,4}|\b0\d{9}\b)'
-
-# All emails
 EMAIL_PATTERN = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
-
-# ALU-specific emails only — (?:...) means group but don't capture separately
 ALU_EMAIL_PATTERN = r'[a-zA-Z0-9._%+-]+@(?:alueducation\.com|alumni\.alueducation\.com|si\.alueducation\.com|alustudents\.com)'
-
-# Credit cards: 16 digits with spaces/dashes, or 15 digits (Amex)
-CARD_PATTERN = r'\b(?:\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}|\d{15})\b'
+CARD_PATTERN  = r'\b(?:\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}|\d{15})\b'
 
 
 # ─────────────────────────────────────────
@@ -83,17 +67,6 @@ def display(label, items, mask_fn=None):
 
 
 # ─────────────────────────────────────────
-#  SAVE OUTPUT TO JSON
-# ─────────────────────────────────────────
-
-def save_output(data, filepath):
-    os.makedirs(os.path.dirname(filepath), exist_ok=True)
-    with open(filepath, "w") as f:
-        json.dump(data, f, indent=4)
-    print(f"\n✅ Results saved to {filepath}")
-
-
-# ─────────────────────────────────────────
 #  MAIN
 # ─────────────────────────────────────────
 
@@ -105,26 +78,19 @@ def main():
     print("  🔍 ALU Data Extraction & Validation Tool")
     print("─"*45)
 
-    # Load the text
-    text = load_text(input_path)
+    text     = load_text(input_path)
+    alu_only = get_alu_choice()
 
-    # Ask user about ALU-only email filter
-    choice = input("\n  Extract ALU-specific emails only? (yes/no): ").strip().lower()
-    alu_only = choice == "yes"
-
-    # Run all extractions
     urls   = extract_urls(text)
     phones = extract_phones(text)
     emails = extract_emails(text, alu_only=alu_only)
     cards  = extract_cards(text)
 
-    # Display results with masking where needed
     display("URLs", urls)
     display("Phone Numbers", phones, mask_fn=mask_phone)
     display("Emails", emails, mask_fn=mask_email)
     display("Credit Card Numbers", cards, mask_fn=mask_card)
 
-    # Build masked output for JSON
     output_data = {
         "alu_only_filter": alu_only,
         "urls": urls,
