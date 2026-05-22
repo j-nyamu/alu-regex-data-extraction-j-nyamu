@@ -1,68 +1,69 @@
-Customer Support Log - Batch #2024-07
+Hey Sarah, just a reminder to send the invoice to billing@techcorp.io before EOD.
+Also cc john.carter@gmail.com on that thread. The client keeps reaching out to
+support@alueducation.com but nobody is responding. Can someone check that inbox?
 
-Contact us at support@alueducation.com or visit https://www.alueducation.com for help.
-You can also reach the alumni network at alumni@alumni.alueducation.com.
+---
 
-Student inquiry received from jane.doe@alustudents.com on 12/07/2024.
-Forwarded to advisor at k.smith@si.alueducation.com for follow-up.
+From: k.smith@si.alueducation.com
+To: admissions@alueducation.com
+Date: 12/07/2024
 
-External partner email: john.carter@gmail.com, billing@techcorp.io
+Hi team, attaching the student report for this quarter. The new intake forms were
+submitted through https://portal.alueducation.com/dashboard last week but three
+students never completed verification. Jane reached out from jane.doe@alustudents.com
+and said the portal kept timing out. Can we escalate?
 
---- Transaction Records ---
+Also registrar@alueducation.com has been bouncing emails since Monday. IT ticket
+filed at http://internal.techcorp.io/reports/2024/july — no update yet.
 
-Client: Marcus Bell
-Phone: +1-800-555-0199
-Alt Phone: +250 788 123 456
-Local contact: 0712345678
+---
 
-Payment details (ENCRYPTED LOG):
-Card: 4111 1111 1111 1111  [Visa]
-Card: 5500-0000-0000-0004  [Mastercard]
-Card: 378282246310005      [Amex]
+[SUPPORT TICKET #4471]
+Customer: Marcus Bell
+Contact: +1 415 555 0132
+Alt: +250 788 123 456
+Local: 0712345678
 
---- Web References ---
+Issue: Payment declined twice. First attempt used card 4111 1111 1111 1111,
+second attempt with 5500-0000-0000-0004. Both failed at checkout. Customer is
+frustrated and asking for a callback. His backup card on file ends in 0005 —
+full number 378282246310005. Please do not share card details over email.
 
-Visit our portal: https://portal.alueducation.com/dashboard
-Report filed at: http://internal.techcorp.io/reports/2024/july
-Resource link: https://docs.python.org/3/library/re.html
+---
 
---- Misc Notes ---
+[INTERNAL SLACK EXPORT - #finance-team]
 
-Wrong formats (should NOT be matched):
-not-an-email@
-@nodomain.com
-phone: 123
-card: 1234 5678
-url: justtext.noprotocol
+@alice: hey did anyone verify the transaction from yesterday? 
+        card 4532 0151 1283 0366 was flagged by the system
+@bob: yeah i saw that, forwarding to compliance. also
+      6011-1111-1111-1117 showed up twice in the logs
+@alice: weird. looping in random.person@yahoo.com since they
+        handle fraud cases. also pinging contact@microsoft.com
+@bob: cool. full report at https://www.wikipedia.org/wiki/Regular_expression
+      and source at https://docs.python.org/3/library/re.html
 
---- Additional Test Data ---
+---
 
-More staff contacts:
-registrar@alueducation.com
-admissions@si.alueducation.com
-john.alumni@alumni.alueducation.com
-random.person@yahoo.com
-contact@microsoft.com
+[ALUMNI NEWSLETTER DRAFT]
 
-More phone formats:
-+44 20 7946 0958
-+1 415 555 0132
-0798765432
+Dear alumni, welcome to our quarterly update! Visit us at https://www.alueducation.com
+or reach the alumni network directly at john.alumni@alumni.alueducation.com. For
+admissions queries contact admissions@si.alueducation.com. Students can access
+their portal via https://github.com/j-nyamu for code resources.
 
-More transactions:
-Card: 4532 0151 1283 0366  [Visa]
-Card: 6011-1111-1111-1117  [Discover]
-Card: 370000000000002       [Amex]
+UK office reachable at +44 20 7946 0958 during business hours.
+Rwanda HQ: +250 788 123 456. Local admissions line: 0798765432.
 
-More URLs:
-https://github.com/j-nyamu
-https://www.wikipedia.org/wiki/Regular_expression
-http://api.alueducation.com/v1/students
+---
 
-More invalid/tricky entries (should NOT match):
-email: missingatsign.com
-phone: 12345
-card: 9999 9999
-url: ftp://shouldnotmatch.com
-email: @missinglocal.com
-phone: +999
+[QA TESTER NOTES - do not ship]
+
+These should NOT be extracted:
+- broken email: missingatsign.com
+- no domain: @nodomain.com  
+- incomplete card: 9999 9999
+- short number: 123
+- bad url: ftp://shouldnotmatch.com
+- missing local: @missinglocal.com
+- too short phone: +999
+- partial card: 1234 5678

@@ -1,27 +1,38 @@
 {
     "alu_only_filter": false,
     "urls": [
-        "https://www.alueducation.com",
         "https://portal.alueducation.com/dashboard",
         "http://internal.techcorp.io/reports/2024/july",
-        "https://docs.python.org/3/library/re.html"
+        "https://www.wikipedia.org/wiki/Regular_expression",
+        "https://docs.python.org/3/library/re.html",
+        "https://www.alueducation.com",
+        "https://github.com/j-nyamu"
     ],
     "phone_numbers": [
-        "180****199",
+        "141****132",
         "250****456",
-        "071****678"
+        "071****678",
+        "250****456",
+        "079****432"
     ],
     "emails": [
-        "su***@alueducation.com",
-        "al***@alumni.alueducation.com",
-        "ja***@alustudents.com",
-        "k.***@si.alueducation.com",
+        "bi***@techcorp.io",
         "jo***@gmail.com",
-        "bi***@techcorp.io"
+        "su***@alueducation.com",
+        "k.***@si.alueducation.com",
+        "ad***@alueducation.com",
+        "ja***@alustudents.com",
+        "re***@alueducation.com",
+        "ra***@yahoo.com",
+        "co***@microsoft.com",
+        "jo***@alumni.alueducation.com",
+        "ad***@si.alueducation.com"
     ],
     "credit_cards": [
         "4111 **** **** 1111",
         "5500 **** **** 0004",
-        "3782 **** **** 0005"
+        "3782 **** **** 0005",
+        "4532 **** **** 0366",
+        "6011 **** **** 1117"
     ]
 }

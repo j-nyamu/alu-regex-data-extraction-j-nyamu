@@ -8,11 +8,46 @@ from output_handler import save_output
 #  REGEX PATTERNS
 # ─────────────────────────────────────────
 
-URL_PATTERN   = r'https?://[^\s]+'
+# ─────────────────────────────────────────
+#  REGEX PATTERNS
+# ─────────────────────────────────────────
+
+# URL pattern:
+# https?:// — matches http:// or https:// (the ? makes the 's' optional)
+# [^\s]+    — matches everything after until a space is hit
+# This ensures we only grab proper web URLs, not things like ftp:// or plain text
+URL_PATTERN = r'https?://[^\s]+'
+
+# Phone pattern:
+# \+\d{1,3}      — international code starting with + (e.g. +250, +1, +44)
+# [-\s]\d{1,4}   — area code separated by dash or space
+# [-\s]\d{3}     — first digit group
+# [-\s]\d{3,4}   — second digit group
+# |\b0\d{9}\b    — OR a local number starting with 0 followed by 9 digits (e.g. 0712345678)
+# The | separates two valid phone formats so both are matched
 PHONE_PATTERN = r'(\+\d{1,3}[-\s]\d{1,4}[-\s]\d{3}[-\s]\d{3,4}|\b0\d{9}\b)'
+
+# General email pattern:
+# [a-zA-Z0-9._%+-]+ — local part before @ (letters, numbers, dots, underscores, etc.)
+# @                  — literal @ symbol
+# [a-zA-Z0-9.-]+    — domain name (e.g. gmail, alueducation)
+# \.[a-zA-Z]{2,}    — dot followed by at least 2 letter extension (e.g. .com, .io)
+# This covers all standard email formats
 EMAIL_PATTERN = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
+
+# ALU-specific email pattern:
+# Same local part as above but domain is restricted to known ALU domains only
+# (?:...) is a non-capturing group — groups the options without returning them separately
+# The | separates each valid ALU domain so any one of them can match
 ALU_EMAIL_PATTERN = r'[a-zA-Z0-9._%+-]+@(?:alueducation\.com|alumni\.alueducation\.com|si\.alueducation\.com|alustudents\.com)'
-CARD_PATTERN  = r'\b(?:\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}|\d{15})\b'
+
+# Credit card pattern:
+# \b                         — word boundary so we don't grab numbers mid-sentence
+# \d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4} — 16 digits in groups of 4 (spaces or dashes optional)
+# |                          — OR
+# \d{15}                     — 15 digits with no separator (Amex format)
+# \b                         — closing word boundary
+CARD_PATTERN = r'\b(?:\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}|\d{15})\b'
 
 
 # ─────────────────────────────────────────
