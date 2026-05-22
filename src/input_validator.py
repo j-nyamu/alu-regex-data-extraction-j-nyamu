@@ -4,4 +4,4 @@ def get_alu_choice():
         choice = input("\n  Extract ALU-specific emails only? (yes/no): ").strip().lower()
         if choice in ("yes", "no"):
             return choice == "yes"
-        print("  ⚠️  Invalid input. Please type 'yes' or 'no'.")
+        print("  Invalid input. Please type 'yes' or 'no'.")

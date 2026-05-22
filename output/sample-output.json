@@ -1,5 +1,5 @@
 {
-    "alu_only_filter": false,
+    "alu_only_filter": true,
     "urls": [
         "https://portal.alueducation.com/dashboard",
         "http://internal.techcorp.io/reports/2024/july",
@@ -16,15 +16,11 @@
         "079****432"
     ],
     "emails": [
-        "bi***@techcorp.io",
-        "jo***@gmail.com",
         "su***@alueducation.com",
         "k.***@si.alueducation.com",
         "ad***@alueducation.com",
         "ja***@alustudents.com",
         "re***@alueducation.com",
-        "ra***@yahoo.com",
-        "co***@microsoft.com",
         "jo***@alumni.alueducation.com",
         "ad***@si.alueducation.com"
     ],

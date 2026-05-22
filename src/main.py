@@ -1,12 +1,9 @@
 import re
 import json
+
 from file_handler import load_text
 from input_validator import get_alu_choice
 from output_handler import save_output
-
-# ─────────────────────────────────────────
-#  REGEX PATTERNS
-# ─────────────────────────────────────────
 
 # ─────────────────────────────────────────
 #  REGEX PATTERNS
@@ -92,13 +89,13 @@ def mask_phone(phone):
 
 def display(label, items, mask_fn=None):
     print(f"\n{'='*45}")
-    print(f"  📌 {label} ({len(items)} found)")
+    print(f"  {label} ({len(items)} found)")
     print(f"{'='*45}")
     if not items:
-        print("  ⚠️  None found.")
+        print("  None found.")
     for item in items:
         displayed = mask_fn(item) if mask_fn else item
-        print(f"  → {displayed}")
+        print(f"  -> {displayed}")
 
 
 # ─────────────────────────────────────────
@@ -109,9 +106,9 @@ def main():
     input_path  = "input/raw-text.txt"
     output_path = "output/sample-output.json"
 
-    print("\n" + "─"*45)
-    print("  🔍 ALU Data Extraction & Validation Tool")
-    print("─"*45)
+    print("\n" + "-"*45)
+    print("  ALU Data Extraction & Validation Tool")
+    print("-"*45)
 
     text     = load_text(input_path)
     alu_only = get_alu_choice()
@@ -135,7 +132,7 @@ def main():
     }
 
     save_output(output_data, output_path)
-    print("\n  Done! 🎉\n")
+    print("\n  Done!\n")
 
 
 if __name__ == "__main__":
