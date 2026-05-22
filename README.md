@@ -17,7 +17,8 @@ A Python command-line tool that scans raw text files and extracts structured dat
 
 ## Privacy & Masking
 
-Sensitive fields are masked in both terminal output and JSON:
+Sensitive fields are masked in both terminal output and JSON.
+Full values are never stored or displayed in plain text.
 
 | Type | Raw | Masked |
 |---|---|---|
@@ -36,17 +37,23 @@ When prompted, entering `yes` restricts email extraction to ALU formats only:
 - `@si.alueducation.com`
 - `@alustudents.com`
 
+Entering `no` extracts all valid emails from the input file.
+
+---
+
+## Security Considerations
+
+- Sensitive data (cards, emails, phones) is masked before display and before saving to JSON
+- Credit card masking follows the PCI-DSS standard — only first 4 and last 4 digits shown
+- Malformed and invalid inputs are safely ignored by the regex patterns
+- Error handling prevents the program from crashing on missing, empty, or unwritable files
+
 ---
 
 ## Project Structure
-alu-regex-data-extraction-j-nyamu/
-├── input/
-│   └── raw-text.txt        # Raw text input file
-├── src/
-│   └── main.py             # Main Python script
-├── output/
-│   └── sample-output.json  # Auto-generated masked output
-└── README.md
+
+---
+
 ## How to Run
 
 1. Clone the repository:
@@ -66,7 +73,18 @@ python src/main.py
 
 ---
 
+## Error Handling
+
+| Scenario | Behaviour |
+|---|---|
+| `raw-text.txt` is missing | Prints clear error message and exits |
+| `raw-text.txt` is empty | Prints clear error message and exits |
+| User types something other than yes/no | Re-prompts until valid input is given |
+| Output folder is not writable | Prints permission error and exits cleanly |
+
+---
+
 ## Requirements
 
 - Python 3.x
-- No external libraries needed it uses built-in `re`, `json`, and `os` modules
+- No external libraries needed — uses built-in `re`, `json`, `os`, and `sys` modules

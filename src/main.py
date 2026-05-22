@@ -70,18 +70,41 @@ def extract_cards(text):
 #  PRIVACY MASKING
 # ─────────────────────────────────────────
 
+# ─────────────────────────────────────────
+#  PRIVACY MASKING
+# ─────────────────────────────────────────
+
+# Security consideration:
+# Extracted sensitive data should never be displayed or stored in plain text.
+# Even in internal tools, exposing full card numbers, emails, or phone numbers
+# creates risk of accidental leaks through logs, screenshots, or shared terminals.
+# All three functions below strip the original value and return a masked version
+# that reveals just enough to identify the data without exposing the full details.
+
 def mask_card(card):
+    # Security: Credit card numbers are high-value targets.
+    # We remove all non-digit characters first to normalize the format,
+    # then only show the first 4 and last 4 digits.
+    # The middle 8 digits are the most sensitive and are hidden with asterisks.
+    # This follows the PCI-DSS standard for safe card number display.
     digits = re.sub(r'\D', '', card)
     return digits[:4] + ' **** **** ' + digits[-4:]
 
 def mask_email(email):
+    # Security: Exposing full email addresses can enable phishing or spam.
+    # We split at the @ symbol to separate the local part from the domain,
+    # then only show the first 2 characters of the local part.
+    # The domain is kept visible so the email is still identifiable.
     local, domain = email.split('@')
     return local[:2] + '***@' + domain
 
 def mask_phone(phone):
+    # Security: Full phone numbers can be used for social engineering attacks.
+    # We strip all non-digit characters to normalize the number,
+    # then only show the first 3 and last 3 digits.
+    # The middle digits which are the most identifying are hidden.
     digits = re.sub(r'\D', '', phone)
     return digits[:3] + '****' + digits[-3:]
-
 
 # ─────────────────────────────────────────
 #  DISPLAY RESULTS
